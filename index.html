@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script type="module" crossorigin src="https://lib.dxcc.fr/dx-assistant.umd.js"></script>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
+  </style>
+  </head>
+
+  <body>
+    <dx-chatbox id="chatbox" business-id="businessId"></dx-chatbox>
+
+    <div class="container">
+      <label for="inputField" class="label">businessId:</label>
+      <input type="text" id="inputField" class="textbox">
+      <button class="button" id="validateButton">Validate</button>
+    </div>
+    <script>
+      var businessId = localStorage.getItem('businessId');
+      document.getElementById("chatbox").setAttribute("business-id",localStorage.getItem('businessId'));
+      console.log(document.getElementById("chatbox").attributes["business-id"])
+      validateButton = document.getElementById("validateButton");
+      validateButton.addEventListener("click", function () {
+        localStorage.setItem('businessId', document.getElementById("inputField").value);
+        location.reload();
+      }, false);
+    </script>
+  </body>
+</html>
